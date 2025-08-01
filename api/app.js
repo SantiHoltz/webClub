@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(cors({
   origin: process.env.NODE_ENV === 'production' 
-    ? ["http://localhost:5173", "http://localhost:3000", "https://canchaargentino-santiago-holtzs-projects.vercel.app"] 
+    ? ["http://localhost:5173", "http://localhost:3000", "https://canchaargentino.vercel.app"] 
     : ["http://localhost:5173", "http://localhost:3000"],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
