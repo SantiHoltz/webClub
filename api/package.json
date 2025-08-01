@@ -7,6 +7,7 @@
   "scripts": {
     "start": "node app.js",
     "dev": "node --watch app.js",
+    "build": "echo 'Build completed'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "philip",
@@ -17,5 +18,8 @@
     "pg": "^8.16.3",
     "sequelize": "^6.37.3",
     "sqlite3": "^5.1.7"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }

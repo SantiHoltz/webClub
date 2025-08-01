@@ -5,10 +5,12 @@ import Comprador from './models/compradores.js';
 import compradorRoutes from './routes/comprador.routes.js';
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: process.env.NODE_ENV === 'production' 
+    ? ["https://tu-frontend-domain.vercel.app", "https://tu-frontend-domain.netlify.app"] 
+    : "http://localhost:5173",
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
