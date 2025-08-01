@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Configuración base de axios
-const API_BASE_URL = 'http://localhost:3000';
+const API_BASE_URL = 'https://webclub-production.up.railway.app';
 
 const compradorService = {
   // Obtener todos los compradores
