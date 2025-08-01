@@ -1,0 +1,24 @@
+### Obtener compradores
+GET http://localhost:3000/compradores
+
+### Obtener comprador por cuadricula
+GET http://localhost:3000/compradores/1
+
+### Crear comprador
+POST http://localhost:3000/compradores
+Content-Type: application/json
+
+{
+    "nombre": "Juan Holtz"
+}
+
+### Actualizar comprador
+PUT http://localhost:3000/compradores/2
+Content-Type: application/json
+
+{
+    "nombre": "Ju"
+}   
+
+### Eliminar comprador
+DELETE http://localhost:3000/compradores/2

@@ -2,6 +2,7 @@
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
+  padding-top: 40px; /* Espacio adicional para evitar que se corte con el encabezado */
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: white;
   min-height: 100vh;
@@ -87,7 +88,20 @@
   font-size: 1.2rem;
   font-weight: bold;
   margin-right: 15px;
-  margin-top: 2px;
+  margin-top: 0;
+  flex-shrink: 0;
+  line-height: 1.4;
+  display: flex;
+  align-items: center; /* Cambiado de flex-start a center para centrar verticalmente */
+  padding-top: 0; /* Removido el padding-top */
+  min-height: 1.4em; /* Altura mínima para alinear con el texto */
+}
+
+.detalle-metodo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centra el contenido verticalmente */
 }
 
 .detalle-metodo h4 {
@@ -201,6 +215,7 @@
 @media (max-width: 768px) {
   .comprar-container {
     padding: 15px;
+    padding-top: 35px;
   }
   
   .comprar-header h1 {
@@ -227,8 +242,13 @@
 }
 
 @media (max-width: 480px) {
+  .comprar-container {
+    padding: 10px;
+    padding-top: 30px;
+  }
+  
   .comprar-header {
-    padding: 20px;
+    padding: 20px 15px;
   }
   
   .comprar-header h1 {
@@ -236,11 +256,15 @@
   }
   
   .comprar-content {
-    padding: 20px;
+    padding: 20px 15px;
   }
   
   .slogan-section h2 {
     font-size: 1.3rem;
+  }
+  
+  .precio-destacado {
+    padding: 20px 15px;
   }
   
   .precio-destacado h3 {
@@ -250,10 +274,183 @@
   .metodo-pago {
     flex-direction: column;
     text-align: center;
+    padding: 12px;
   }
   
   .icono-metodo {
     margin-right: 0;
     margin-bottom: 10px;
+    margin-top: 0;
+    padding-top: 0;
+    align-items: center;
+    min-height: auto;
+  }
+  
+  .contacto-section {
+    padding: 20px 15px;
+  }
+  
+  .telefono {
+    padding: 12px 20px;
+  }
+  
+  .numero {
+    font-size: 1.1rem;
+  }
+  
+  .info-card {
+    padding: 20px 15px;
+  }
+}
+
+@media (max-width: 360px) {
+  .comprar-container {
+    padding: 8px;
+    padding-top: 25px;
+  }
+  
+  .comprar-header {
+    padding: 15px 10px;
+  }
+  
+  .comprar-header h1 {
+    font-size: 1.3rem;
+  }
+  
+  .comprar-content {
+    padding: 15px 10px;
+  }
+  
+  .slogan-section h2 {
+    font-size: 1.1rem;
+  }
+  
+  .precio-destacado {
+    padding: 15px 10px;
+    margin: 20px 0;
+  }
+  
+  .precio-destacado h3 {
+    font-size: 1.1rem;
+  }
+  
+  .metodos-pago h3 {
+    font-size: 1.2rem;
+  }
+  
+  .metodo-pago {
+    padding: 10px;
+  }
+  
+  .detalle-metodo h4 {
+    font-size: 1rem;
+  }
+  
+  .detalle-metodo p {
+    font-size: 0.9rem;
+  }
+  
+  .contacto-section {
+    padding: 15px 10px;
+  }
+  
+  .contacto-section h3 {
+    font-size: 1.1rem;
+  }
+  
+  .telefono {
+    padding: 10px 15px;
+  }
+  
+  .numero {
+    font-size: 1rem;
+  }
+  
+  .info-card {
+    padding: 15px 10px;
+  }
+  
+  .info-card h4 {
+    font-size: 1.1rem;
+  }
+  
+  .info-card p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .comprar-container {
+    padding: 6px;
+    padding-top: 20px;
+  }
+  
+  .comprar-header {
+    padding: 12px 8px;
+  }
+  
+  .comprar-header h1 {
+    font-size: 1.2rem;
+  }
+  
+  .comprar-content {
+    padding: 12px 8px;
+  }
+  
+  .slogan-section h2 {
+    font-size: 1rem;
+  }
+  
+  .precio-destacado {
+    padding: 12px 8px;
+    margin: 15px 0;
+  }
+  
+  .precio-destacado h3 {
+    font-size: 1rem;
+  }
+  
+  .metodos-pago h3 {
+    font-size: 1.1rem;
+  }
+  
+  .metodo-pago {
+    padding: 8px;
+  }
+  
+  .detalle-metodo h4 {
+    font-size: 0.9rem;
+  }
+  
+  .detalle-metodo p {
+    font-size: 0.85rem;
+  }
+  
+  .contacto-section {
+    padding: 12px 8px;
+  }
+  
+  .contacto-section h3 {
+    font-size: 1rem;
+  }
+  
+  .telefono {
+    padding: 8px 12px;
+  }
+  
+  .numero {
+    font-size: 0.9rem;
+  }
+  
+  .info-card {
+    padding: 12px 8px;
+  }
+  
+  .info-card h4 {
+    font-size: 1rem;
+  }
+  
+  .info-card p {
+    font-size: 0.85rem;
   }
 } 

@@ -3,6 +3,7 @@
   max-width: 1200px;     /* <— y que no pase de 1200px */
   margin: 0 auto;        /* <— con eso, en pantallas >1200px quedará perfectamente centrado */
   padding: 20px;
+  padding-top: 40px; /* Espacio adicional para evitar que se corte con el encabezado */
   text-align: center;
   min-height: 100vh;
   display: flex;
@@ -30,7 +31,7 @@
   max-width: 100%;
   margin: 0 auto;
   border-radius: 10px;
-  overflow: hidden;
+  overflow: visible;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   width: 100%;
   max-width: 800px;
@@ -107,7 +108,7 @@
   /* Asegurar que el tooltip no se salga del contenedor */
   max-width: 200px;
   white-space: nowrap;
-  overflow: hidden;
+  overflow: visible;
   text-overflow: ellipsis;
 }
 
@@ -176,6 +177,7 @@
 @media (max-width: 768px) {
   .imagen-interactiva-container {
     padding: 15px;
+    padding-top: 35px;
   }
   
   .imagen-interactiva-container h2 {
@@ -208,10 +210,16 @@
 @media (max-width: 480px) {
   .imagen-interactiva-container {
     padding: 10px;
+    padding-top: 30px;
   }
   
   .imagen-interactiva-container h2 {
     font-size: 1.3rem;
+  }
+  
+  .imagen-interactiva-container p {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
   }
   
   .tooltip-text {
@@ -221,6 +229,7 @@
   
   .estadisticas {
     padding: 15px;
+    margin-top: 20px;
   }
   
   .estadisticas p {
@@ -229,5 +238,73 @@
   
   .mensaje-especial {
     font-size: 1rem !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .imagen-interactiva-container {
+    padding: 8px;
+    padding-top: 25px;
+  }
+  
+  .imagen-interactiva-container h2 {
+    font-size: 1.1rem;
+  }
+  
+  .imagen-interactiva-container p {
+    font-size: 0.85rem;
+    margin-bottom: 15px;
+  }
+  
+  .tooltip-text {
+    font-size: 0.65rem;
+    padding: 3px 6px;
+  }
+  
+  .estadisticas {
+    padding: 12px;
+    margin-top: 15px;
+  }
+  
+  .estadisticas p {
+    font-size: 0.85rem;
+  }
+  
+  .mensaje-especial {
+    font-size: 0.9rem !important;
+  }
+}
+
+@media (max-width: 320px) {
+  .imagen-interactiva-container {
+    padding: 6px;
+    padding-top: 20px;
+  }
+  
+  .imagen-interactiva-container h2 {
+    font-size: 1rem;
+  }
+  
+  .imagen-interactiva-container p {
+    font-size: 0.8rem;
+    margin-bottom: 12px;
+  }
+  
+  .tooltip-text {
+    font-size: 0.6rem;
+    padding: 2px 5px;
+  }
+  
+  .estadisticas {
+    padding: 10px;
+    margin-top: 12px;
+  }
+  
+  .estadisticas p {
+    font-size: 0.8rem;
+  }
+  
+  .mensaje-especial {
+    font-size: 0.85rem !important;
   }
 } 

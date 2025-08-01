@@ -3,7 +3,7 @@
   min-height: 100vh;
   margin: 0;
   padding: 0;
-  padding-top: 100px; /* Espacio para el encabezado fijo */
+  padding-top: 120px; /* Aumentado para dar más espacio al encabezado */
 }
 
 /* Reset básico */
@@ -17,29 +17,53 @@ body {
   font-family: 'Arial', sans-serif;
   line-height: 1.6;
   overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
 }
 
 /* Responsive para el padding-top */
 @media (max-width: 768px) {
   .App {
-    padding-top: 90px;
+    padding-top: 110px;
   }
 }
 
 @media (max-width: 600px) {
   .App {
-    padding-top: 80px;
+    padding-top: 100px;
   }
 }
 
 @media (max-width: 480px) {
   .App {
-    padding-top: 70px;
+    padding-top: 90px;
   }
 }
 
 @media (max-width: 360px) {
   .App {
-    padding-top: 65px;
+    padding-top: 85px;
+  }
+}
+
+/* Optimizaciones para móviles */
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+  
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Asegurar que el contenido no se desborde en móviles */
+@media (max-width: 320px) {
+  .App {
+    padding-top: 80px;
+  }
+  
+  body {
+    font-size: 13px;
   }
 }
