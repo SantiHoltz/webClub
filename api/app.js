@@ -54,7 +54,6 @@ app.get("/", (req, res) => {
 
 app.use("/compradores", compradorRoutes);
 
-
 (async function start() {
     try {
         // Validar conexión a la base de datos.
