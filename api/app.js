@@ -8,9 +8,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(cors({
-  origin: process.env.NODE_ENV === 'production' 
-    ? ["http://localhost:5173", "http://localhost:3000", "https://canchaargentino.vercel.app"] 
-    : ["http://localhost:5173", "http://localhost:3000"],
+  origin: true, // Permitir todos los orígenes temporalmente
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
