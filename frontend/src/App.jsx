@@ -4,9 +4,6 @@ import Encabezado from './components/Encabezado'
 import ImagenInteractiva from './pages/ImagenInteractiva'
 import Presentacion from './pages/Presentacion'
 import Comprar from './pages/Comprar'
-import Login from './pages/Login'
-import Admin from './pages/Admin'
-import ProtectedRoute from './components/ProtectedRoute'
 import './App.css'
 
 
@@ -20,8 +17,6 @@ function App() {
           <Route path="/presentacion" element={<Presentacion />} />
           <Route path="/cuadrados" element={<ImagenInteractiva />} />
           <Route path="/comprar" element={<Comprar />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/admin" element={<ProtectedRoute><Admin /></ProtectedRoute>} />
         </Routes>
       </div>
     </Router>

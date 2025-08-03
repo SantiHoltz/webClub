@@ -21,8 +21,7 @@ const Presentacion = () => {
 
             <div className="presentacion-content">
                 <div className="carta-section">
-                    <h3>A quien corresponda:</h3>
-                    
+
                     <p>
                         Nos acercamos con una solicitud muy especial: renovar el piso de nuestro gimnasio principal, 
                         ese mismo que durante más de 60 años fue testigo silencioso del paso de generaciones enteras 
