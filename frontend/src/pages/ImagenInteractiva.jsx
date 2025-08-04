@@ -110,7 +110,7 @@ const ImagenInteractiva = () => {
   return (
     <div className="imagen-interactiva-container">
       <h2>Cancha Club Argentino - Marcos Juárez</h2>
-      <p>Pasa el mouse sobre las tablas de la cancha para ver quién las compró</p>
+      <p>Pulsa sobre las tablas de la cancha para ver quién ya es parte de este sueño</p>
       
       <div className="imagen-container">
         <div className="imagen-fondo">
