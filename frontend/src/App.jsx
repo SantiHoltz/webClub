@@ -13,8 +13,7 @@ function App() {
       <div className="App">
         <Encabezado />
         <Routes>
-          <Route path="/" element={<Navigate to="/presentacion" />} />
-          <Route path="/presentacion" element={<Presentacion />} />
+          <Route path="/" element={<Presentacion />} />
           <Route path="/cuadrados" element={<ImagenInteractiva />} />
           <Route path="/comprar" element={<Comprar />} />
         </Routes>

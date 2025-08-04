@@ -16,7 +16,7 @@ const Encabezado = () => {
           <ul className="nav-lista">
             <li className="nav-item">
               <NavLink 
-                to="/presentacion" 
+                to="/" 
                 className={({ isActive }) => `nav-link ${isActive ? 'nav-link-activo' : ''}`}
               >
                 Presentación
