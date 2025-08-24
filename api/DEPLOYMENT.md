@@ -4,7 +4,8 @@
 
 ### 1. Preparación del repositorio
 - Asegúrate de que tu código esté en un repositorio de GitHub
-- El repositorio debe contener la carpeta `api/` con todos los archivos necesarios
+- El repositorio puede contener tanto la API como el frontend
+- Render solo desplegará la carpeta `api/` gracias a la configuración `rootDir: api`
 
 ### 2. Crear cuenta en Render
 - Ve a [render.com](https://render.com)
@@ -45,17 +46,24 @@ DATABASE_URL=tu_url_de_neon_aqui
 
 ## Estructura de archivos necesaria
 
+Tu repositorio puede tener esta estructura:
 ```
-api/
-├── app.js
-├── db.js
-├── package.json
-├── render.yaml
-├── models/
-├── routes/
-├── services/
-└── repositories/
+parque/
+├── api/                    ← Solo esto se despliega en Render
+│   ├── app.js
+│   ├── db.js
+│   ├── package.json
+│   ├── render.yaml
+│   ├── models/
+│   ├── routes/
+│   ├── services/
+│   └── repositories/
+├── frontend/               ← Esto se ignora en Render
+├── .renderignore           ← Archivo para ignorar archivos
+└── README.md
 ```
+
+**Importante**: Render solo desplegará la carpeta `api/` gracias a la configuración `rootDir: api` en `render.yaml`.
 
 ## Notas importantes
 
@@ -63,6 +71,14 @@ api/
 - **Variables de entorno**: Nunca subas credenciales directamente al código
 - **Logs**: Puedes ver los logs de tu aplicación en el dashboard de Render
 - **Escalado**: Render ofrece planes gratuitos y de pago para diferentes necesidades
+- **Frontend separado**: El frontend no se despliega en Render, solo la API
+
+## ¿Por qué solo se despliega la API?
+
+- **`rootDir: api`** en `render.yaml` le dice a Render que solo use la carpeta `api/`
+- **`.renderignore`** ignora archivos innecesarios como `frontend/`, `node_modules/`, etc.
+- Esto permite mantener todo en un solo repositorio pero desplegar solo lo necesario
+- Tu frontend puede desplegarse por separado en Vercel, Netlify, o cualquier otra plataforma
 
 ## Solución de problemas comunes
 

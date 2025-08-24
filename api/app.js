@@ -4,6 +4,10 @@ import cors from "cors";
 import Comprador from './models/compradores.js';
 import compradorRoutes from './routes/comprador.routes.js';
 
+// Cargar variables de entorno desde archivo .env
+import dotenv from 'dotenv';
+dotenv.config();
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -33,6 +37,7 @@ app.use((error, req, res, next) => {
 
 // Ruta principal de servidor
 app.get("/", (req, res) => {
+  const currentUrl = req.protocol + '://' + req.get('host');
   res.send(`
     <html>
       <head>
@@ -45,7 +50,8 @@ app.get("/", (req, res) => {
       <body>
         <div class="container">
           <h1>🚀 Servidor Express Activo</h1>
-          <p>API corriendo en <strong>http://localhost:3000</strong></p>
+          <p>API corriendo en <strong>${currentUrl}</strong></p>
+          <p>Estado: <span style="color: green;">✅ Funcionando</span></p>
         </div>
       </body>
     </html>
@@ -68,6 +74,7 @@ app.use("/compradores", compradorRoutes);
         app.listen(PORT, () => {
             console.log(`🚀 Servidor iniciado y escuchando en el puerto ${PORT}`);
         });
+
     } catch (error) {
         console.error('❌ Error al conectar con la base de datos:', error);
         process.exit(1); // Terminar el proceso si no se puede conectar

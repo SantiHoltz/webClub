@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Encabezado from './components/Encabezado'
 import ImagenInteractiva from './pages/ImagenInteractiva'
 import Presentacion from './pages/Presentacion'
