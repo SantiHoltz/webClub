@@ -13,7 +13,7 @@ const API_CONFIG = {
 };
 
 // Determinar el entorno actual
-const isDevelopment = process.env.NODE_ENV === 'development' || !process.env.NODE_ENV;
+const isDevelopment = import.meta.env.MODE === 'development';
 
 // Exportar la configuración del entorno actual
 export const currentConfig = API_CONFIG[isDevelopment ? 'development' : 'production'];
