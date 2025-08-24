@@ -22,3 +22,4 @@ Content-Type: application/json
 
 ### Eliminar comprador
 DELETE http://localhost:3000/compradores/2
+
