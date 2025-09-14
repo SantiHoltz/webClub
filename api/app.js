@@ -60,7 +60,8 @@ app.get("/", (req, res) => {
 
 app.use("/compradores", compradorRoutes);
 
-(async function start() {
+// Función para inicializar la base de datos
+async function initializeDatabase() {
     try {
         // Validar conexión a la base de datos.
         await sequelize.authenticate();
@@ -69,14 +70,21 @@ app.use("/compradores", compradorRoutes);
         // Sincronizar modelos con la base de datos
         await sequelize.sync({ force: false });
         console.log('✅ Modelos sincronizados con la base de datos.');
-
-        // Iniciar el servidor
-        app.listen(PORT, () => {
-            console.log(`🚀 Servidor iniciado y escuchando en el puerto ${PORT}`);
-        });
-
     } catch (error) {
         console.error('❌ Error al conectar con la base de datos:', error);
-        process.exit(1); // Terminar el proceso si no se puede conectar
+        throw error;
     }
-})();
+}
+
+// Inicializar base de datos al importar el módulo
+initializeDatabase().catch(console.error);
+
+// Para desarrollo local
+if (process.env.NODE_ENV !== 'production') {
+    app.listen(PORT, () => {
+        console.log(`🚀 Servidor iniciado y escuchando en el puerto ${PORT}`);
+    });
+}
+
+// Exportar la app para Vercel
+export default app;

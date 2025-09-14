@@ -20,6 +20,9 @@
     "sequelize": "^6.37.3",
     "sqlite3": "^5.1.7"
   },
+  "optionalDependencies": {
+    "pg-native": "^3.0.0"
+  },
   "engines": {
     "node": ">=18.0.0"
   }
