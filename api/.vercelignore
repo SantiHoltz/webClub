@@ -1,0 +1,8 @@
+# Ignorar archivos innecesarios para el despliegue
+test/
+*.rest
+.DS_Store
+.env
+.env.local
+.env.production
+node_modules/.cache/
