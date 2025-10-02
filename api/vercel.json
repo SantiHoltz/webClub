@@ -2,14 +2,22 @@
   "version": 2,
   "builds": [
     {
-      "src": "test.js",
-      "use": "@vercel/node"
+      "src": "app.js",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": "node_modules/**"
+      }
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/test.js"
+      "dest": "/app.js"
     }
-  ]
+  ],
+  "functions": {
+    "app.js": {
+      "maxDuration": 30
+    }
+  }
 }
