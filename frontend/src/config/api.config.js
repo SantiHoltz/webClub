@@ -7,7 +7,7 @@ const API_CONFIG = {
   },
   // Producción en Render
   production: {
-    baseURL: 'https://parque-api.vercel.app',
+    baseURL: 'https://webclub-ia76.onrender.com',
     timeout: 15000
   }
 };
