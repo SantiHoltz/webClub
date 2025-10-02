@@ -79,8 +79,8 @@ async function initializeDatabase() {
 // Inicializar base de datos al importar el módulo
 initializeDatabase().catch(console.error);
 
-// Iniciar servidor solo si no estamos en Vercel
-if (!process.env.VERCEL) {
+// Para desarrollo local
+if (process.env.NODE_ENV !== 'production') {
     app.listen(PORT, () => {
         console.log(`🚀 Servidor iniciado y escuchando en el puerto ${PORT}`);
     });
