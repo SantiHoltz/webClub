@@ -41,7 +41,7 @@ app.get("/", (req, res) => {
   res.send(`
     <html>
       <head>
-        <title>Servidor Express</title>
+        <title>Servidor Express con Base de Datos</title>
         <style>
           body { background-color: #f2f2f2; font-family: Arial, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; }
           .container { background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 0 12px rgba(0,0,0,0.1); text-align: center; }
@@ -49,9 +49,10 @@ app.get("/", (req, res) => {
       </head>
       <body>
         <div class="container">
-          <h1>🚀 Servidor Express Activo</h1>
+          <h1>🚀 API con Base de Datos Activa</h1>
           <p>API corriendo en <strong>${currentUrl}</strong></p>
-          <p>Estado: <span style="color: green;">✅ Funcionando</span></p>
+          <p>Estado: <span style="color: green;">✅ Funcionando con PostgreSQL</span></p>
+          <p>Base de datos: <span style="color: blue;">Neon PostgreSQL</span></p>
         </div>
       </body>
     </html>
