@@ -12,12 +12,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(cors({
-  origin: [
-    'http://localhost:5173', // Vite dev server
-    'http://localhost:3000', // Alternativa local
-    'https://tu-frontend.vercel.app', // Tu frontend en Vercel
-    'https://webclub-ia76.onrender.com' // Tu backend en Render
-  ],
+  origin: true, // Permitir todos los orígenes temporalmente
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
