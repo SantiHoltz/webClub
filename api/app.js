@@ -53,6 +53,7 @@ app.get("/", (req, res) => {
           <p>API corriendo en <strong>${currentUrl}</strong></p>
           <p>Estado: <span style="color: green;">✅ Funcionando con PostgreSQL</span></p>
           <p>Base de datos: <span style="color: blue;">Neon PostgreSQL</span></p>
+          <p>Modelos: <span style="color: blue;">Compradores</span></p>
         </div>
       </body>
     </html>
