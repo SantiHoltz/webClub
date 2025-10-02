@@ -18,4 +18,4 @@ README.md
 node_modules/.cache/
 
 # But DO NOT ignore the main node_modules
-# This is crucial for pg package to work
+# This is crucial for pg package to work    
