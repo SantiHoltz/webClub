@@ -7,7 +7,7 @@ const API_CONFIG = {
   },
   // Producción en Vercel
   production: {
-    baseURL: 'https://parque-api.vercel.app',
+    baseURL: 'https://canchaargentino.vercel.app',
     timeout: 15000
   }
 };

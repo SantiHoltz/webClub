@@ -1,24 +1,8 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "app.js",
-      "use": "@vercel/node",
-      "config": {
-        "includeFiles": "node_modules/**"
-      }
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/app.js"
-    }
-  ],
   "functions": {
-    "app.js": {
-      "maxDuration": 30
-    }
+    "app.js": { "runtime": "nodejs20.x", "maxDuration": 30 }
   },
+  "routes": [{ "src": "/(.*)", "dest": "/app.js" }],
   "regions": ["iad1"]
 }
