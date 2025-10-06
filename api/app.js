@@ -88,5 +88,5 @@ if (process.env.NODE_ENV !== 'production') {
     });
 }
 
-// Exportar la app para Vercel
-export default app;
+// ⬇️ Esto es lo que Vercel necesita
+export default serverless(app);

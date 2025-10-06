@@ -1,18 +1,22 @@
 import { Sequelize } from "sequelize";
+import pg from "pg"; // <-- driver correcto para Sequelize
 
-// Usar variable de entorno para la URL de la base de datos
-const databaseUrl = process.env.DATABASE_URL || 'postgresql://neondb_owner:npg_KHyCg9QNJbp8@ep-misty-hill-ac9gzlxq-pooler.sa-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require';
+const databaseUrl = process.env.DATABASE_URL;
+if (!databaseUrl) {
+  throw new Error("DATABASE_URL no está definida");
+}
 
-const sequelize = new Sequelize(databaseUrl, { 
-  dialect: 'postgres',
-  dialectModule: require('postgres'),
-  ssl: {
-    require: true,
-    rejectUnauthorized: false,
-  }, 
-  logging: process.env.NODE_ENV === 'development' ? console.log : false,
+export const sequelize = new Sequelize(databaseUrl, {
+  dialect: "postgres",
+  dialectModule: pg,
+  dialectOptions: {
+    ssl: { require: true, rejectUnauthorized: false }
+    // Si tu DATABASE_URL ya trae "sslmode=require", igual dejamos esto por compatibilidad.
+  },
+  logging: process.env.NODE_ENV === "development" ? console.log : false,
   pool: {
-    max: 1,
+    // Pool chico para serverless
+    max: 2,
     min: 0,
     acquire: 30000,
     idle: 10000
