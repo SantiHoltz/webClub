@@ -3,93 +3,61 @@ import sequelize from './db.js';
 import cors from "cors";
 import Comprador from './models/compradores.js';
 import compradorRoutes from './routes/comprador.routes.js';
-import serverless from 'serverless-http';
-
-// Cargar variables de entorno desde archivo .env
-import dotenv from 'dotenv';
+// ... tus imports de siempre
+import serverless from "serverless-http";
+import dotenv from "dotenv";
 dotenv.config();
 
+
 const app = express();
-const PORT = process.env.PORT || 3000;
+app.use(cors({ origin: true, methods: ["GET","POST","PUT","DELETE"], credentials: true }));
+app.use(express.json({ limit: "10mb" }));
+app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
-app.use(cors({
-  origin: true, // Permitir todos los orígenes temporalmente
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true
-}));
-
-app
-  .use(express.json({ limit: '10mb' }))
-  .use(express.urlencoded({ extended: true, limit: '10mb' }));
-
+// 1) Respuestas inmediatas (no DB)
 app.get("/health", (_req, res) => res.json({ ok: true }));
 
-// Middleware para manejar errores de JSON
-app.use((error, req, res, next) => {
-  if (error instanceof SyntaxError && error.status === 400 && 'body' in error) {
-    console.error('Error de JSON:', error.message);
-    console.error('Body recibido:', req.body);
-    return res.status(400).json({ 
-      error: 'JSON inválido', 
-      message: error.message,
-      receivedBody: req.body 
-    });
-  }
-  next();
-});
-
-// Ruta principal de servidor
 app.get("/", (req, res) => {
-  const currentUrl = req.protocol + '://' + req.get('host');
-  res.send(`
-    <html>
-      <head>
-        <title>Servidor Express con Base de Datos</title>
-        <style>
-          body { background-color: #f2f2f2; font-family: Arial, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; }
-          .container { background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 0 12px rgba(0,0,0,0.1); text-align: center; }
-        </style>
-      </head>
-      <body>
-        <div class="container">
-          <h1>🚀 API con Base de Datos Activa</h1>
-          <p>API corriendo en <strong>${currentUrl}</strong></p>
-          <p>Estado: <span style="color: green;">✅ Funcionando con PostgreSQL</span></p>
-          <p>Base de datos: <span style="color: blue;">Neon PostgreSQL</span></p>
-          <p>Modelos: <span style="color: blue;">Compradores</span></p>
-        </div>
-      </body>
-    </html>
-  `);
+  const currentUrl = req.protocol + "://" + req.get("host");
+  res.status(200).send(`<!doctype html><html><head><meta charset="utf-8"><title>API</title>
+  <style>body{background:#f2f2f2;font-family:Arial,sans-serif;display:flex;justify-content:center;align-items:center;height:100vh}
+  .container{background:#fff;padding:2rem;border-radius:12px;box-shadow:0 0 12px rgba(0,0,0,.1);text-align:center}</style></head>
+  <body><div class="container"><h1>🚀 API con Base de Datos</h1>
+  <p>API: <strong>${currentUrl}</strong></p>
+  <p>Estado: ✅ Funciona</p></div></body></html>`);
 });
 
-app.use("/compradores", compradorRoutes);
+// 2) Init DB en background (no bloquea)
+let initStarted = false;
+async function initDb() {
+  try {
+    await sequelize.authenticate();
+    // si no necesitás migrar en cada arranque, mejor NO hacer sync
+    // await sequelize.sync({ force: false });
+    console.log("✅ DB lista");
+  } catch (e) {
+    console.error("❌ Error DB:", e);
+  }
+}
+function ensureInitOnce() {
+  if (!initStarted) { initStarted = true; initDb(); }
+}
+ensureInitOnce();
 
-// Función para inicializar la base de datos
-async function initializeDatabase() {
-    try {
-        // Validar conexión a la base de datos.
-        await sequelize.authenticate();
-        console.log('✅ Conexión a la base de datos establecida correctamente.');
+// 3) Rutas que usan DB
+app.use("/compradores", (req, res, next) => { ensureInitOnce(); next(); }, compradorRoutes);
 
-        // Sincronizar modelos con la base de datos
-        await sequelize.sync({ force: false });
-        console.log('✅ Modelos sincronizados con la base de datos.');
-    } catch (error) {
-        console.error('❌ Error al conectar con la base de datos:', error);
-        throw error;
-    }
+// 4) Error handler
+app.use((err, _req, res, _next) => {
+  console.error("❌ Unhandled error:", err);
+  res.status(500).json({ error: "Internal Server Error", detail: String(err?.message || err) });
+});
+
+// Local dev
+if (process.env.NODE_ENV !== "production") {
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => console.log(`Dev en http://localhost:${PORT}`));
 }
 
-// Inicializar base de datos al importar el módulo
-initializeDatabase().catch(console.error);
-
-// Para desarrollo local
-if (process.env.NODE_ENV !== 'production') {
-    app.listen(PORT, () => {
-        console.log(`🚀 Servidor iniciado y escuchando en el puerto ${PORT}`);
-    });
-}
-
-// ⬇️ Esto es lo que Vercel necesita
+// Vercel
 export default serverless(app);
