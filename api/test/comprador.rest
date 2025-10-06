@@ -2,7 +2,7 @@
 GET http://localhost:3000/compradores
 
 ### Obtener comprador por cuadricula
-GET http://localhost:3000/compradores/1
+GET http://localhost:3000/compradores/300
 
 ### Crear comprador
 POST http://localhost:3000/compradores
