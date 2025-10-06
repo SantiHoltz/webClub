@@ -21,6 +21,8 @@ app
   .use(express.json({ limit: '10mb' }))
   .use(express.urlencoded({ extended: true, limit: '10mb' }));
 
+app.get("/health", (_req, res) => res.json({ ok: true }));
+
 // Middleware para manejar errores de JSON
 app.use((error, req, res, next) => {
   if (error instanceof SyntaxError && error.status === 400 && 'body' in error) {
