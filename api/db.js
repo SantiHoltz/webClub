@@ -1,3 +1,11 @@
+// api/db.js  (poner ESTO primero)
+import dotenv from "dotenv";
+import path from "path";
+import { fileURLToPath } from "url";
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+dotenv.config({ path: path.join(__dirname, ".env") }); // <-- carga /api/.env
+
+// api/db.js  (o ../db.js según dónde lo tengas)
 import { Sequelize } from "sequelize";
 import pg from "pg";
 

@@ -3,6 +3,7 @@ import sequelize from './db.js';
 import cors from "cors";
 import Comprador from './models/compradores.js';
 import compradorRoutes from './routes/comprador.routes.js';
+import serverless from 'serverless-http';
 
 // Cargar variables de entorno desde archivo .env
 import dotenv from 'dotenv';
