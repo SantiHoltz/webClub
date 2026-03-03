@@ -138,10 +138,10 @@ const ImagenInteractiva = () => {
       </div>
       
       <div className="estadisticas">
-        <p>Total de m²: 567</p>
+        <p>Total de m²: 608</p>
         <p>m² vendidos: {compradores.length}</p>
-        <p>m² disponibles: {567 - compradores.length}</p>
-        <p>Porcentaje de m² vendidos: {((compradores.length / 567) * 100).toFixed(2)}%</p>
+        <p>m² disponibles: {608 - compradores.length}</p>
+        <p>Porcentaje de m² vendidos: {((compradores.length / 608) * 100).toFixed(2)}%</p>
         <p className="mensaje-especial">"Sumate a los que ya están dejando su huella"</p>
       </div>
     </div>
